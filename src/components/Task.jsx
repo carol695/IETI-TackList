@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTaskList } from "../hooks/useTaskList";
 
 export const Task = (props)=>{
     const {title, isPending, description, onDelete, onChangeState} = props;
@@ -11,9 +12,7 @@ export const Task = (props)=>{
 
     const handleChangeState = () => {
         const newIschecked = !isChecked
-    
         setIsChecked(newIschecked);
-
         onChangeState(title, newIschecked)
     }
 
