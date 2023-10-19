@@ -1,20 +1,20 @@
 import { useState } from "react";
 
 export const Task = (props)=>{
-    const {title, onDelete, isFinish, onFinish} = props;
-    const [isChecked, setIsChecked] = useState(isFinish)
+    const {title, isPending, description, onDelete, onChangeState} = props;
+
+    const [isChecked, setIsChecked] = useState(isPending)
 
     const handleDelete = ( ) => {
         onDelete(title);
     }
 
-    const handleFinish = () => {
-        onFinish(title, isChecked);
-    }
-
     const handleChangeState = () => {
-        setIsChecked(!isChecked);
-        handleFinish();
+        const newIschecked = !isChecked
+    
+        setIsChecked(newIschecked);
+
+        onChangeState(title, newIschecked)
     }
 
     return(
